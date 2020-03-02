@@ -16,5 +16,6 @@ Some Matlab tools for path planning on a 3D grid map, including 3D A star, 3D Th
 
 This code was used in the paper:
 D. Sartori, D. Zou, W. Yu, An efficient approach to near-optimal 3D trajectory design in cluttered environments for multirotor UAVs, 2019 IEEE 15th International Conference on Automation Science and Engineering (CASE), Vancouver, August 2019
+
 Available at:
 https://ieeexplore.ieee.org/abstract/document/8842980/
