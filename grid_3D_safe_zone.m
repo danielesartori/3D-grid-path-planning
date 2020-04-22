@@ -44,15 +44,16 @@ for i=1:x_size
         if min(k)>0 && min(l)>0 && max(k)<=x_size && max(l)<=y_size && EE(j,i)==1            
             
             %Assign random value to block
-            hh=random('Normal',0.75*h,0.5*h);
-            E(l,k)=round(hh);
+            hh=round(random('Normal',0.75*h,0.5*h));
             
             %Give a minimum value to the altitude and limit maximum altitude
-            if E(l,k)<hh_min
-                E(l,k)=hh_min;
-            elseif E(l,k)>z_size
-                E(l,k)=z_size;
+            if hh<hh_min
+                hh=hh_min;
+            elseif hh>z_size
+                hh=z_size;
             end
+            
+            E(l,k)=hh;  
                 
         end
     end
