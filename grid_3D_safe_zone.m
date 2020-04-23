@@ -104,7 +104,7 @@ for i=1:x_size
             end
         end
         
-        %If point is evelated add one safe step in altitude
+        %If point is elevated add one safe step in altitude
         if E_safe(j,i)>0 && E_safe(j,i)<z_size-1
             E_safe(j,i)=E_safe(j,i)+1;            
         end        
