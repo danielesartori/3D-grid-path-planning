@@ -91,7 +91,7 @@ for i=1:x_size
             for l=-1:1
                 
                 %If neighbours within the grid and among all the neighbours there is one high element and we are not in a high node or safe node
-                if min(i+k)>0 && min(j+l)>0 && max(i+k)<=x_size && max(j+l)<=y_size && E(j+l,i+k)>0 && E(j,i)==0
+                if (i+k)>0 && (j+l)>0 && (i+k)<=x_size && (j+l)<=y_size && E(j+l,i+k)>0 && E(j,i)==0
                      
                     %Assign the maximum value of the neighbour nodes
                     E_safe(j,i)=max(E(j+l,i+k));
