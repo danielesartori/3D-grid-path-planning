@@ -97,7 +97,7 @@ for i=1:x_size
                     if E(j+l,i+k)>0 && E(j,i)==0
                      
                         %Assign the maximum value of the neighbour nodes
-                        E_safe(j,i)=max(E(j+l,i+k));
+                        E_safe(j,i)=E(j+l,i+k);
                         
                     end                    
                 end
