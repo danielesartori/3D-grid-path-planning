@@ -27,7 +27,7 @@ E=double(E>sigma_obstacle);
 
 %Assign random altitude to blocks around points 
 
-%Minimum altitude
+%Minimum obstacle altitude
 hh_min=3;
 
 %Initialize temporary matrix for evaluation
@@ -53,8 +53,8 @@ for i=1:x_size
                 hh=z_size;
             end
             
-            E(l,k)=hh;  
-                
+            E(l,k)=hh;           
+            
         end
     end
 end
@@ -87,21 +87,28 @@ for i=1:x_size
     for j=1:y_size
         
         %Check neighbour nodes
-        for k=-1:1
-            for l=-1:1
-                
-                %If neighbours are within the grid 
-                if (i+k)>0 && (j+l)>0 && (i+k)<=x_size && (j+l)<=y_size 
-                
-                    %If among all the neighbours there is one high element and we are not in a high node or safe node                
-                    if E(j+l,i+k)>0 && E(j,i)==0
-                     
-                        %Assign the maximum value of the neighbour nodes
-                        E_safe(j,i)=E(j+l,i+k);
-                        
-                    end                    
-                end
-            end
+        k=i-1:i+1;
+        l=j-1:j+1;
+        
+        %Limit neighbours within the grid
+        if min(k)<1
+            k=i:i+1;
+        elseif max(k)>x_size
+            k=i-1:i;
+        end
+        if min(l)<1
+            l=j:j+1;
+        elseif max(l)>y_size
+            l=j-1:j;
+        end
+        
+        %Evaluation matrix
+        E_eval=E(l,k);    
+            
+        %If we are in a free point and nearby there is obstacle
+        if E(j,i)==0 && max(E_eval(:))>0
+            %Assign the maximum value of the neighbour nodes
+            E_safe(j,i)=max(E_eval(:));
         end
         
         %If point is elevated add one safe step in altitude
@@ -111,6 +118,7 @@ for i=1:x_size
         
     end
 end
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,28 +139,26 @@ for i=1:x_size
             %Limit neighbours within the grid
             if min(l)<1
                 l=i:i+1;
-            elseif  max(l)>x_size
+            elseif max(l)>x_size
                 l=i-1:i;
             end
-            
             if min(m)<1
                 m=j:j+1;
-            elseif  max(m)>y_size
+            elseif max(m)>y_size
                 m=j-1:j;
             end
-            
             if min(n)<1
                 n=k:k+1;
-            elseif  max(n)>z_size
+            elseif max(n)>z_size
                 n=k-1:k;
-            end
-            
+            end            
             
             %Evaluation matrix
             E_eval=E3d(m,l,n);            
             
             %If we are in a free point and nearby there is obstacle
             if E3d(j,i,k)==0 && max(E_eval(:))==1
+                %Assign safe value of the neighbour nodes
                E3d_safe(j,i,k)=0.5;
             end
 
