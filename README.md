@@ -21,11 +21,12 @@ D. Sartori, D. Zou, W. Yu, An efficient approach to near-optimal 3D trajectory d
 Available at:
 https://ieeexplore.ieee.org/abstract/document/8842980/
 
-@INPROCEEDINGS{8842980,
-  author={D. {Sartori} and D. {Zou} and W. {Yu}},
-  booktitle={2019 IEEE 15th International Conference on Automation Science and Engineering (CASE)}, 
-  title={An efficient approach to near-optimal 3D trajectory design in cluttered environments for multirotor UAVs}, 
-  year={2019},
-  volume={},
-  number={},
-  pages={1016-1022},}
+@INPROCEEDINGS{sartori,<br />
+  author={D. {Sartori} and D. {Zou} and W. {Yu}},<br />
+  booktitle={2019 IEEE 15th International Conference on Automation Science and Engineering (CASE)}, <br />
+  title={An efficient approach to near-optimal 3D trajectory design in cluttered environments for multirotor UAVs}, <br />
+  year={2019},<br />
+  volume={},<br />
+  number={},<br />
+  pages={1016-1022},<br />
+  }
